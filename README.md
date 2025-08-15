@@ -22,7 +22,7 @@ HoloMed 시스템은 하드웨어와 소프트웨어의 긴밀한 통합을 통�
 1.  **OptiTrack Motive**: 적외선 카메라를 이용해 물리적 마커의 3차원 위치와 회전 정보를 추적합니다.
 2.  **Python TCP Server**: Motive에서 NatNet SDK를 통해 받은 데이터를 가공하여 홀로렌즈 2 앱으로 TCP 통신을 이용해 실시간으로 스트리밍합니다.
 3.  **Unity HoloLens App**: 수신된 데이터를 기반으로 3D 장기 모델을 렌더링하고, 실제 마네킹 위에 정확히 정렬하여 증강 현실 경험을 제공합니다.
-
+<img src="docs/system_architecture.png" alt="System Architecture" width="600">
 -----
 
 ## 프로젝트 구조
