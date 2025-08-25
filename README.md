@@ -26,7 +26,7 @@ HoloMed 시스템은 하드웨어와 소프트웨어의 긴밀한 통합을 통�
 1.  **OptiTrack Motive**: 적외선 카메라를 이용해 물리적 마커의 3차원 위치와 회전 정보를 추적합니다.
 2.  **Python TCP Server**: Motive에서 NatNet SDK를 통해 받은 데이터를 가공하여 홀로렌즈 2 앱으로 TCP 통신을 이용해 실시간으로 스트리밍합니다.
 3.  **Unity HoloLens App**: 수신된 데이터를 기반으로 3D 장기 모델을 렌더링하고, 실제 마네킹 위에 정확히 정렬하여 증강 현실 경험을 제공합니다.
-<img src="docs/system_architecture.png" alt="System Architecture" width="600">
+<img src="docs/images/system_architecture.png" alt="System Architecture" width="600">
 
 -----
 
@@ -99,7 +99,7 @@ Tip: \<YourUsername\> 부분을 실제 Windows 사용자 계정명으로 바꿔�
     (참고: 홀로렌즈를 통해 실제 눈으로 볼 때 인식되는 오차는 약 3–4 mm였습지만, 캡처 화면에서는 더 오차가 커 보임)
 
 ### 측정 방법
-![accuracy_method](docs/accuracy_method.png)
+![accuracy_method](docs/images/accuracy_method.png)
 
 *수동 보정 → 오버레이된 3D 마커와 출력된 마커를 비교 → ImageJ를 사용하여 측정*
 
