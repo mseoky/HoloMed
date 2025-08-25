@@ -23,7 +23,7 @@
   - 의료
   - 애니메이션 등
 
-![system_overview](images/motive_system.png)
+<img src="images/motive_system.png" alt="system_overview" width="500"/>
 
 ---
 
@@ -35,7 +35,7 @@
   (모든 카메라가 Object 모드여야 함)
 - **Calibration 탭 → New Calibration** 클릭
 
-![calibration1](images/motive_calibration1.png)
+<img src="images/motive_calibration1.png" alt="calibration1" width="500"/>
 
 ---
 
@@ -43,7 +43,7 @@
 - **Cameras View**로 전환
 - **Mask** 기능을 사용하여 불필요한 노이즈(반사체)를 제거
 
-![calibration2](images/motive_calibration2.png)
+<img src="images/motive_calibration2.png" alt="calibration2" width="600"/>
 
 ---
 
@@ -52,7 +52,7 @@
 - Wanding은 카메라들이 공간 좌표계를 정확히 인식할 수 있도록 하는 동적 캘리브레이션 과정
 - 완료 후 **Start Calculation** 클릭 → 카메라 간 상대적 위치와 방향 계산
 
-![calibration3](images/motive_calibration3.png)
+<img src="images/motive_calibration3.png" alt="calibration3" width="600"/>
 
 ---
 
@@ -62,7 +62,7 @@
 - Long arm → +z, Short arm → +x, +y up
 - Calibration 결과는 `.cal` 형식으로 지정 경로에 자동 저장됨
 
-![calibration4](images/motive_calibration4.png)  
+<img src="images/motive_calibration4.png" alt="calibration4" width="600"/>
 
 ---
 
@@ -72,7 +72,7 @@
 - Rigid Body로 사용할 대상에 3개 이상의 마커 부착
 - (예시: 테이프 바깥쪽 면에 8개 마커 부착)
 
-![rigidbody1](images/rigidbody1.png)
+<img src="images/motive_rigidbody1.png" alt="rigidbody1" width="300"/>
 
 ---
 
@@ -80,14 +80,14 @@
 - Perspective View로 전환 후, 인식된 마커들을 마우스로 드래그
 - 마우스 우클릭 → **Create Rigid Body** 클릭
 
-![rigidbody2](images/rigidbody2.png)  
+<img src="images/motive_rigidbody2.png" alt="rigidbody2" width="300"/> 
 
 ---
 
 ### (3) 등록 확인
 - **Assets 탭**에서 Rigid Body 등록 여부 확인
 
-![rigidbody3](images/rigidbody3.png)
+<img src="images/motive_rigidbody3.png" alt="rigidbody3" width="600"/> 
 
 ---
 
@@ -96,7 +96,7 @@
 - 하단의 **빨간색 버튼(Record/Live Capture)** 클릭
 - 객체 움직임을 추적
 
-![rigidbody_tracking](images/rigidbody_tracking.gif)
+<img src="images/motive_rigidbody_tracking.gif" alt="rigidbody_tracking" width="600"/>
 
 ---
 
@@ -154,7 +154,7 @@ Rigid Body 등록 이후, **NatNet Streaming** 기능을 활성화하여 외부 
 7. **Data Port**: 1511
 8. **Up Axis**: Y Axis
 
-![motive_streaming](images/motive_streaming.png)
+<img src="images/motive_streaming.png" alt="motive_streaming" width="300"/>
 
 #### Windows 방화벽 설정
 - **제어판 → Windows Defender 방화벽 → 고급 설정 → 인바운드 규칙 추가**
@@ -171,7 +171,7 @@ Rigid Body 등록 이후, **NatNet Streaming** 기능을 활성화하여 외부 
 
 ---
 
-## ✅ 전체 요약
+## 전체 요약
 1. **Motive 실행** → 카메라 Tracking 확인  
 2. **Calibration** → Noise 제거 → Wanding → Ground Plane 설정  
 3. **Rigid Body 등록** → 마커 드래그 & 등록 확인  
