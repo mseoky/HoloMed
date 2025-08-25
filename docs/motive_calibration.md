@@ -96,7 +96,7 @@
 - 하단의 **빨간색 버튼(Record/Live Capture)** 클릭
 - 객체 움직임을 추적
 
-![rigidbody_tracking](docs/images/rigidbody_tracking.png)
+![rigidbody_tracking](docs/images/rigidbody_tracking.gif)
 
 ---
 
