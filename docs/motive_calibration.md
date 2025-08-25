@@ -96,7 +96,7 @@
 - 하단의 **빨간색 버튼(Record/Live Capture)** 클릭
 - 객체 움직임을 추적
 
-![rigidbody_tracking](docs/images/rigidbody_tracking.png)
+![rigidbody_tracking](docs/images/rigidbody_tracking.gif)
 
 ---
 
@@ -133,16 +133,8 @@ CSV 파일에는 다음과 같은 정보가 포함됩니다:
 | …       | …                            | (마커 개수에 따라 반복) |
 | N       | **Marker8 X, Y, Z**          | 여덟 번째 마커 좌표 |
 
-📌 요약  
-- **Rotation (4열)**: 객체 방향 정보 (Quaternion X, Y, Z, W)  
-- **Position (3열)**: Rigid Body 중심 좌표 (X, Y, Z)  
-- **Marker Position (3 × 8열)**: 부착된 8개 마커 좌표  
-- **Time**: 전체 데이터의 기준 시간축 (정밀 동기화용)
-
 즉, CSV 데이터는 객체 중심 좌표와 마커별 좌표까지 모두 포함하고,  
 100 Hz로 시간별 세밀한 움직임을 기록합니다.
-
-![rigidbody_analysis](docs/images/rigidbody_analysis.png)
 
 ---
 
