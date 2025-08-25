@@ -77,7 +77,7 @@ HoloMed/
 
 ### 2. 파이썬 TCP 서버 실행 (Windows CMD)
 
-NatNet SDK 설치 후, Python 샘플 클라이언트 폴더(NatNetSDK\Samples\PythonClient)에서 서버 스크립트를 실행합니다.
+NatNet SDK 설치 후, Python 샘플 클라이언트 폴더(NatNetSDK\Samples\PythonClient)에서 [HoloMed 서버 스크립트](server/HoloMedServer.py)를 실행합니다.
 
 [NatNet SDK 다운로드 링크](https://optitrack.com/support/downloads/developer-tools.html#natnet-sdk)
 
