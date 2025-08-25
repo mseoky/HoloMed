@@ -36,11 +36,10 @@ HoloMed 시스템은 하드웨어와 소프트웨어의 긴밀한 통합을 통�
 HoloMed/
 ├─ README.md             # 프로젝트 개요 및 빠른 시작 가이드
 ├─ /server/              # OptiTrack -> 홀로렌즈용 파이썬 TCP 서버
-│  ├─ README.md
 │  └─ HoloMedServer.py
 ├─ /unity/               # 홀로렌즈 2용 유니티 MRTK3 프로젝트
 │  ├─ README.md
-│  └─ (Assets, Scripts, MRTK settings 등)
+│  └─ (Assets, Scripts, ProjectSettings 등)
 ├─ /docs/                # 문서 및 이미지
 │  ├─ motive_calibration.md
 │  └─ /images/           # 스크린샷, 다이어그램, GIF 등
@@ -74,11 +73,13 @@ HoloMed/
 2. 마네킹(또는 피험자)에 반사 마커를 부착하고, 이를 **Rigid Body**로 정의하여 추적이 잘 되는지 확인합니다.
 3. **NatNet Streaming**을 활성화하고, Transmission Type을 **Unicast** 또는 **Multicast** 중 프로젝트 환경에 맞게 선택합니다.
 
-👉 자세한 캘리브레이션 및 설정 과정은 [OptiTrack Calibration & Data Guide](docs/motive_calibration.md)를 참고하세요.
+상세 설명: [OptiTrack Calibration & Data Guide](docs/motive_calibration.md)
 
 ### 2. 파이썬 TCP 서버 실행 (Windows CMD)
 
 NatNet SDK 설치 후, Python 샘플 클라이언트 폴더(NatNetSDK\Samples\PythonClient)에서 서버 스크립트를 실행합니다.
+
+[NatNet SDK 다운로드 링크](https://optitrack.com/support/downloads/developer-tools.html#natnet-sdk)
 
 ```cmd
 cd C:\Users\<YourUsername>\NatNetSDK\Samples\PythonClient
@@ -90,6 +91,8 @@ Tip: \<YourUsername\> 부분을 실제 Windows 사용자 계정명으로 바꿔�
 
 1.  Unity에서 `/unity` 폴더를 엽니다.
 2.  MRTK3 및 OpenXR 설정을 완료한 후, 홀로렌즈 2용으로 앱을 빌드하고 배포합니다.
+
+상세 설명: [Unity (MRTK3) + HoloLens2 Setup & Deployment Guide](unity/README.md)
 
 ### 4. AR 환경에서 보정
 
