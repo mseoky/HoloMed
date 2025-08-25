@@ -2,6 +2,8 @@
 
 이 문서는 OptiTrack 시스템을 활용해 마커를 추적하고, Unity/HoloLens와 연동하기 위해 필요한 **Motive Calibration 절차와 데이터 활용 방법**을 정리한 것입니다.
 
+참고 영상: [OptiTrack - Motive 3.0 | Quick Start Guide](https://www.youtube.com/watch?v=HyrHhaRVOaM&t=140s)
+
 ---
 
 ## 1. OptiTrack 시스템 소개
@@ -21,7 +23,7 @@
   - 의료
   - 애니메이션 등
 
-![system_overview](docs/motive_system.png)
+![system_overview](docs/images/motive_system.png)
 
 ---
 
@@ -33,7 +35,7 @@
   (모든 카메라가 Object 모드여야 함)
 - **Calibration 탭 → New Calibration** 클릭
 
-![calibration1](docs/motive_calibration1.png)
+![calibration1](docs/images/motive_calibration1.png)
 
 ---
 
@@ -41,7 +43,7 @@
 - **Cameras View**로 전환
 - **Mask** 기능을 사용하여 불필요한 노이즈(반사체)를 제거
 
-![calibration2](docs/motive_calibration2.png)
+![calibration2](docs/images/motive_calibration2.png)
 
 ---
 
@@ -50,7 +52,7 @@
 - Wanding은 카메라들이 공간 좌표계를 정확히 인식할 수 있도록 하는 동적 캘리브레이션 과정
 - 완료 후 **Start Calculation** 클릭 → 카메라 간 상대적 위치와 방향 계산
 
-![calibration3](docs/motive_calibration3.png)
+![calibration3](docs/images/motive_calibration3.png)
 
 ---
 
@@ -60,8 +62,7 @@
 - Long arm → +z, Short arm → +x, +y up
 - Calibration 결과는 `.cal` 형식으로 지정 경로에 자동 저장됨
 
-![calibration4](docs/motive_calibration4.png)
-출처: [YouTube Tutorial](https://www.youtube.com/watch?v=HyrHhaRVOaM&t=140s)
+![calibration4](docs/images/motive_calibration4.png)  
 
 ---
 
@@ -71,7 +72,7 @@
 - Rigid Body로 사용할 대상에 3개 이상의 마커 부착
 - (예시: 테이프 바깥쪽 면에 8개 마커 부착)
 
-![rigidbody1](docs/rigidbody1.png)
+![rigidbody1](docs/images/rigidbody1.png)
 
 ---
 
@@ -79,14 +80,14 @@
 - Perspective View로 전환 후, 인식된 마커들을 마우스로 드래그
 - 마우스 우클릭 → **Create Rigid Body** 클릭
 
-![rigidbody2](docs/rigidbody2.png)  
+![rigidbody2](docs/images/rigidbody2.png)  
 
 ---
 
 ### (3) 등록 확인
 - **Assets 탭**에서 Rigid Body 등록 여부 확인
 
-![rigidbody3](docs/rigidbody3.png)
+![rigidbody3](docs/images/rigidbody3.png)
 
 ---
 
@@ -95,7 +96,7 @@
 - 하단의 **빨간색 버튼(Record/Live Capture)** 클릭
 - 객체 움직임을 추적
 
-![rigidbody_tracking](docs/rigidbody_tracking.png)
+![rigidbody_tracking](docs/images/rigidbody_tracking.png)
 
 ---
 
@@ -105,29 +106,48 @@ Rigid Body 추적 데이터는 **두 가지 방식**으로 외부에서 활용�
 
 ---
 
-### (A) CSV 파일 Export (오프라인 분석)
+### (A) CSV 파일 Export & 결과 분석 (오프라인)
+
 - **Data 탭**에서 추적 데이터 마우스 우클릭 → **Solve All Assets** 클릭  
   (이 과정을 거치지 않으면 Export 시 `Unsolved Assets` 오류 발생)
 - 이후 **Export Tracking Data** 선택
 - Export 형식: `.csv` 권장
 - 내보낼 데이터 선택 (Rigid Body 중심 좌표, Rotation, Marker 좌표 등)
 
-![export](docs/motive_export.png)  
+![export](docs/images/motive_export.png)  
 
 CSV 파일에는 다음과 같은 정보가 포함됩니다:
 
-![csv_capture](docs/motive_csv.png)
+![csv_capture](docs/images/motive_csv.png)
 
-- **Rotation (Quaternion X, Y, Z, W)**: 객체의 방향 정보
-- **Position (X, Y, Z)**: Rigid Body 중심 좌표
-- **Marker Position (X, Y, Z × n)**: 부착된 개별 마커 좌표
-- **Time (sec)**: 100 Hz 주기로 기록된 프레임별 시간
+#### CSV 열 구조 설명
+| 열 번호 | 열 이름(예시)                | 설명 |
+|---------|------------------------------|------|
+| 1       | **Frame**                    | 프레임 번호 (0, 1, 2 …) |
+| 2       | **Time (s)**                 | 시간 (초 단위, 100 Hz 주기 → 0.01초 간격) |
+| 3–5     | **Position X, Y, Z**         | Rigid Body 중심 좌표 (3D 위치) |
+| 6–9     | **Rotation Qx, Qy, Qz, Qw**  | Rigid Body 회전(Quaternion) |
+| 10–12   | **Marker1 X, Y, Z**          | 첫 번째 마커 좌표 |
+| 13–15   | **Marker2 X, Y, Z**          | 두 번째 마커 좌표 |
+| 16–18   | **Marker3 X, Y, Z**          | 세 번째 마커 좌표 |
+| …       | …                            | (마커 개수에 따라 반복) |
+| N       | **Marker8 X, Y, Z**          | 여덟 번째 마커 좌표 |
 
-즉, 오프라인 환경에서는 객체의 자세/위치/마커별 좌표까지 모두 분석할 수 있습니다.
+📌 요약  
+- **Rotation (4열)**: 객체 방향 정보 (Quaternion X, Y, Z, W)  
+- **Position (3열)**: Rigid Body 중심 좌표 (X, Y, Z)  
+- **Marker Position (3 × 8열)**: 부착된 8개 마커 좌표  
+- **Time**: 전체 데이터의 기준 시간축 (정밀 동기화용)
+
+즉, CSV 데이터는 객체 중심 좌표와 마커별 좌표까지 모두 포함하고,  
+100 Hz로 시간별 세밀한 움직임을 기록합니다.
+
+![rigidbody_analysis](docs/images/rigidbody_analysis.png)
 
 ---
 
 ### (B) 실시간 스트리밍 (Unity/HoloLens 연동)
+
 Rigid Body 등록 이후, **NatNet Streaming** 기능을 활성화하여 외부 프로그램(Unity, Python Server 등)으로 데이터를 전송할 수 있습니다.
 
 #### 기본 설정
@@ -142,7 +162,7 @@ Rigid Body 등록 이후, **NatNet Streaming** 기능을 활성화하여 외부 
 7. **Data Port**: 1511
 8. **Up Axis**: Y Axis
 
-![motive_streaming](docs/motive_streaming.png)
+![motive_streaming](docs/images/motive_streaming.png)
 
 #### Windows 방화벽 설정
 - **제어판 → Windows Defender 방화벽 → 고급 설정 → 인바운드 규칙 추가**
@@ -159,30 +179,11 @@ Rigid Body 등록 이후, **NatNet Streaming** 기능을 활성화하여 외부 
 
 ---
 
-## 6. Rigid Body 추적 결과 분석
-
-CSV로 Export된 데이터를 이용해 객체의 움직임을 세밀하게 분석할 수 있습니다.
-
-- **Rotation (4열)**  
-  - 객체 방향 정보 (Quaternion X, Y, Z, W)
-
-- **Position (27열)**  
-  - Rigid Body 중심 좌표 (X, Y, Z)  
-  - 부착된 8개 마커 좌표 (X, Y, Z × 8개)
-
-- Position 데이터에는 객체 중심 좌표와 마커별 개별 좌표 모두 포함됨
-- 100 Hz 주기로 시간별 세밀한 움직임 기록
-
-![rigidbody_analysis](docs/rigidbody_analysis.png)
-
----
-
 ## ✅ 전체 요약
 1. **Motive 실행** → 카메라 Tracking 확인  
 2. **Calibration** → Noise 제거 → Wanding → Ground Plane 설정  
 3. **Rigid Body 등록** → 마커 드래그 & 등록 확인  
 4. **Tracking 실행**  
 5. **데이터 활용**  
-   - (A) CSV Export → 후처리/분석  
-   - (B) 실시간 Streaming → Unity/HoloLens 연동  
-6. **결과 분석**: Rotation/Position/Marker 좌표 기반, 100 Hz 정밀 기록
+   - (A) CSV Export & 결과 분석 → 후처리/연구용  
+   - (B) 실시간 Streaming → Unity/HoloLens 연동
