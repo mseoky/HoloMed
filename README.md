@@ -36,15 +36,20 @@ HoloMed 시스템은 하드웨어와 소프트웨어의 긴밀한 통합을 통�
 HoloMed/
 ├─ README.md             # 프로젝트 개요 및 빠른 시작 가이드
 ├─ /server/              # OptiTrack -> 홀로렌즈용 파이썬 TCP 서버
-│ ├─ README.md
-│ └─ HoloMedServer.py
+│  ├─ README.md
+│  └─ HoloMedServer.py
 ├─ /unity/               # 홀로렌즈 2용 유니티 MRTK3 프로젝트
-│ ├─ README.md
-│ └─ (Assets, Scripts, MRTK settings 등)
-├─ /docs/                # 문서, 스크린샷, gif
-│ ├─ motive_calibration.md
-│ ├─ demo.gif
-│ └─ system_architecture.png
+│  ├─ README.md
+│  └─ (Assets, Scripts, MRTK settings 등)
+├─ /docs/                # 문서 및 이미지
+│  ├─ motive_calibration.md
+│  └─ /images/           # 스크린샷, 다이어그램, GIF 등
+│     ├─ motive_system.png
+│     ├─ motive_calibration1.png
+│     ├─ motive_rigidbody1.png
+│     ├─ motive_rigidbody_tracking.gif
+│     ├─ motive_export.png
+│     └─ ...
 ```
 
 -----
@@ -68,6 +73,8 @@ HoloMed/
 1. **Motive**에서 카메라를 보정하고 추적 대상을 설정합니다.
 2. 마네킹(또는 피험자)에 반사 마커를 부착하고, 이를 **Rigid Body**로 정의하여 추적이 잘 되는지 확인합니다.
 3. **NatNet Streaming**을 활성화하고, Transmission Type을 **Unicast** 또는 **Multicast** 중 프로젝트 환경에 맞게 선택합니다.
+
+👉 자세한 캘리브레이션 및 설정 과정은 [OptiTrack Calibration & Data Guide](docs/motive_calibration.md)를 참고하세요.
 
 ### 2. 파이썬 TCP 서버 실행 (Windows CMD)
 
